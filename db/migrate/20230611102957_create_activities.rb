@@ -7,5 +7,7 @@ class CreateActivities < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_foreign_key :activities, :users, column: :username, primary_key: :username
   end
 end

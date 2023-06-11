@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :index] do
     collection do
       post 'follow'
+      post 'list_followed'
     end
   end
 
