@@ -32,6 +32,6 @@ class UsersController < ApplicationController
 
     new_follow = UserFollow.find_or_create_by(username: params[:username], follower: params[:follower])
     
-    render json: { message: "User registered", user: new_follow}, status: :created
+    render json: { message: params[:username] + " followed", user_follow: new_follow}, status: :created
   end
 end
