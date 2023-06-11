@@ -63,9 +63,6 @@ RSpec.describe "Testing API -", type: :request do
     
       get users_path
 
-      p '----------------------'
-      p response.body
-      p '======================'
       expect(response).to have_http_status(200)
       expect(JSON.parse(response.body)['users'].length).to be > 2
     end
@@ -118,46 +115,36 @@ RSpec.describe "Testing API -", type: :request do
       }
     end
   
-    it "Bagas sleep" do
+    it "Bagas, Ina, and Endah clock in sleep and wake" do
       post '/activities/sleep', params: payload1.to_json, headers: { 'Content-Type' => 'application/json' }
       
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Bagaskara sleep")
-    end
-    
-    it "Bagas wake up" do
+      expect(JSON.parse(response.body)['message']).to eq("bagas sleep")
+
       post '/activities/wake', params: payload1.to_json, headers: { 'Content-Type' => 'application/json' }
   
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Bagaskara wake up")
-    end
-  
-    it "Ina sleep" do
+      expect(JSON.parse(response.body)['message']).to eq("bagas wake up")
+
       post '/activities/sleep', params: payload2.to_json, headers: { 'Content-Type' => 'application/json' }
       
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Illina sleep")
-    end
-    
-    it "Ina wake up" do
+      expect(JSON.parse(response.body)['message']).to eq("ina sleep")
+
       post '/activities/wake', params: payload2.to_json, headers: { 'Content-Type' => 'application/json' }
   
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Illina wake up")
-    end
-    
-    it "Endah sleep" do
+      expect(JSON.parse(response.body)['message']).to eq("ina wake up")
+
       post '/activities/sleep', params: payload3.to_json, headers: { 'Content-Type' => 'application/json' }
   
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Endah sleep")
-    end
-    
-    it "Endah wake up" do
+      expect(JSON.parse(response.body)['message']).to eq("endah sleep")
+
       post '/activities/wake', params: payload3.to_json, headers: { 'Content-Type' => 'application/json' }
   
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['message']).to eq("Endah wake up")
+      expect(JSON.parse(response.body)['message']).to eq("endah wake up")
     end
   end
   

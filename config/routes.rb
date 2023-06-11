@@ -9,4 +9,7 @@ Rails.application.routes.draw do
       post 'follow'
     end
   end
+
+  post '/activities/sleep', to: 'activities#sleep'
+  post '/activities/wake', to: 'activities#wake'
 end
