@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_11_102957) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_11_184653) do
   create_table "activities", force: :cascade do |t|
     t.string "username"
     t.datetime "start_sleep"
     t.datetime "end_sleep"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_follows", force: :cascade do |t|
+    t.string "username"
+    t.string "follower"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
